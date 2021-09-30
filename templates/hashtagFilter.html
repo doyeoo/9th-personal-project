@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+</head>
+<body>
+    <div class="contents">
+    <h3 style="font-weight: 600;">#{{ keyword }}</h3>
+
+    <div class="post-container">
+        {% for post in posts.all %}
+        <a href="{% url 'postDetail' post.id %}">
+        <div class="post-wrapper">
+            {% if post.image %}
+            <img class="post-image" src="{{ post.image.url }}">
+            {% endif %}
+            <div class="post-text">
+                <div class="post-title">{{post.title}}</div>
+                <div class="post-pub-date">{{post.pub_date}}</div>
+            </div>   
+        </div>
+        </a>
+        {% endfor %}
+        </div> 
+    </div>
+</body>
+</html>

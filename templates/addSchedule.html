@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+  </head>
+  <body>
+    <div class="contents">
+      <h3 style="font-weight: 600">기록하기</h3>
+      <form method="POST" action="{% url 'createSchedule' post.id %}">
+        {% csrf_token %}
+        <input type="hidden" value="{{post.id}}" name="id" />
+        일정<input type="time" name="start_time" />
+        <input type="time" name="end_time" />
+        <input class="form-control" type="text" name="contents" />
+        <button class="button" type="submit">추가</button>
+      </form>
+      {% for schedule in schedules.all %}
+      <div>{{schedule.start_time}} - {{schedule.end_time}}</div>
+      {{schedule.contents}}
+      <a href="{% url 'deleteNewSchedule' post.id schedule.id %}"
+        ><img src="../static/image/schedule-delete.svg" class="schedule-delete"
+      /></a>
+      <br />
+      {% endfor %}
+      <a href="{% url 'postDetail' post.id %}"
+        ><button class="button">완료</button></a
+      >
+    </div>
+  </body>
+</html>

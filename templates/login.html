@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="contents">
+      <form method="post" action="{% url 'login' %}" class="login-form">
+        {%csrf_token%}
+        <h3 class="sub-title">로그인</h3>
+        <div class="form-group">
+          <div>아이디</div>
+          <input
+            class="form-control"
+            name="{{ form.username.html_name }}"
+            type="text"
+          />
+        </div>
+        <div class="form-group">
+          <div>비밀번호</div>
+          <input
+            class="form-control"
+            name="{{ form.password.html_name }}"
+            type="password"
+          />
+        </div>
+        <div class="button-area">
+          <button type="submit" class="button">로그인</button>
+        </div>
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+      <a href="{% url 'signup' %}" class="button-area"
+        ><button class="button">회원가입</button></a
+      >
+    </div>
+  </body>
+</html>

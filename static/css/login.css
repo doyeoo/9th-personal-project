@@ -1,0 +1,27 @@
+.contents {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+@media screen and (max-width: 700px) {
+  .contents {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.button {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.button-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

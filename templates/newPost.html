@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+  </head>
+  <body>
+    <div class="contents">
+      <h3 style="font-weight: 600">기록하기</h3>
+      <form
+        action="{% url 'createPost' %}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div>제목<input class="form-control" type="text" name="title" /></div>
+        <div>
+          본문<textarea class="form-control" name="body">
+{{post.body}}</textarea
+          >
+        </div>
+        <div>
+          해시태그<input class="form-control" type="text" name="hashtags" />
+        </div>
+        <input type="file" type="img" name="image" multiples />
+        <button class="button" type="submit">일정추가하기</button>
+      </form>
+    </div>
+  </body>
+</html>

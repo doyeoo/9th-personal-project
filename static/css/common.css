@@ -1,0 +1,61 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+*{
+    font-family: Pretendard;
+}
+a{
+    text-decoration: none;
+}
+.header a{
+    color: black;
+    font-weight: 600;
+    padding: 20px;
+}
+.search:hover{
+    color:#b10104;
+}
+.archieve:hover{
+    color:#0114b8;
+}
+.mypage:hover{
+    color: #005e25;
+}
+.auth:hover{
+    color:#f2b400;
+}
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+}
+.header{
+    display: flex;
+}
+.title{
+    font-weight: 600;
+    font-size: 30px;
+}
+@media screen and (max-width:600px) {
+    .title{
+        font-weight: 600;
+        font-size: 30px;
+        padding-bottom: 10px;
+    }   
+    .header-wrapper{
+        display: grid;
+    } 
+    .header a{
+        padding:0 10px 0 0;
+    }
+ }
+ .contents{
+    padding: 0 15%; 
+ }
+ @media screen and (max-width:600px){
+    .contents{
+       padding: 0 20px; 
+    }
+ }
+ #searchInput{
+    display: none;
+ }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/postDetail.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+  </head>
+  <body>
+    <div class="contents">
+      {% if post.image %}
+      <img src="{{ post.image.url }}" class="background-image" />
+      {% endif %}
+
+      <div class="post-title">
+        {{post.title}}
+        <div id="{{post.id}}" onclick="post_bookmark(this.id)">
+          <img
+            src="../static/image/bookmark-empty.svg"
+            id="bookmark-icon-empty"
+          />
+          <img
+            src="../static/image/bookmark-filled.svg"
+            id="bookmark-icon-filled"
+          />
+        </div>
+      </div>
+      {{post.pub_date}}<br />
+      {{post.author.nickname}}<br />
+      {{post.body}}<br />
+      {% for schedule in schedules.all %}
+      {{schedule.start_time}}-{{schedule.end_time}} {{schedule.contents}}
+      <br />
+      {% endfor %} {% for hashtag in hashtags.all %} #{{hashtag}} {% endfor %}
+      {% if user.is_authenticated and user == post.author %}
+      <a href="{% url 'editPost' post.id %}"
+        ><button class="button">수정하기</button></a
+      >
+      <a href="{% url 'deletePost' post.id%}"
+        ><button class="button">삭제하기</button></a
+      >
+      {% endif %}
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      function post_bookmark(id) {
+        $.ajax({
+          url: "{%url 'bookmark'%}",
+          data: {
+            post_id: id,
+          },
+          dataType: "json",
+          success: function (response) {
+            if ($("#bookmark-icon-filled").css("display") === "none") {
+              $("#bookmark-icon-empty").hide();
+              $("#bookmark-icon-filled").show();
+            } else {
+              $("#bookmark-icon-filled").hide();
+              $("#bookmark-icon-empty").show();
+            }
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
