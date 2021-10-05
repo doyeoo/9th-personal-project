@@ -2,11 +2,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  padding-top: 15px;
 }
 @media screen and (max-width: 700px) {
   .post-container {
     grid-template-columns: 1fr;
     gap: 20px;
+    padding-top: 5px;
   }
 }
 .post-wrapper {
@@ -39,6 +41,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 220px;
 }
 .post-title {
   font-size: 20px;

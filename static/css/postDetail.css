@@ -54,7 +54,7 @@
   line-height: 170%;
   width: 70%;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .post-body {
     width: 100%;
   }
@@ -95,4 +95,7 @@
 #bookmark-top {
   position: absolute;
   z-index: 10;
+}
+.time-between {
+  margin: 0 5px;
 }

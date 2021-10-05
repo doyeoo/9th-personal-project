@@ -8,7 +8,7 @@ a {
 .header a {
   color: black;
   font-weight: 600;
-  padding: 20px;
+  padding: 30px 20px;
   font-size: 18px;
 }
 .header a:hover {
@@ -44,7 +44,7 @@ a {
 }
 .contents {
   padding: 0 15%;
-  margin-bottom: 10%;
+  margin-bottom: 15%;
 }
 @media screen and (max-width: 600px) {
   .contents {
@@ -52,14 +52,15 @@ a {
     margin-bottom: 15%;
   }
   .title {
-    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }
 #search-input-wrapper {
   display: none;
   border: 1px solid black;
-  padding: 0 3px;
-  margin: 10px 0;
+  padding: 3px 0;
+  padding-left: 7px;
 }
 .search-input-container {
   display: flex;

@@ -15,7 +15,9 @@
   <body>
     {% include 'header.html' %}
     <div class="contents">
-      <h3 style="font-weight: 600">#{{ keyword }}</h3>
+      <h3 class="ketword" style="font-weight: 600; padding-bottom: 30px">
+        #{{ keyword }}
+      </h3>
 
       <div class="post-container">
         {% for post in posts.all %}

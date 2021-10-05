@@ -18,7 +18,7 @@
   </head>
   <body>
     {% include 'header.html' %}
-    <div class="contents">
+    <div class="addschedule-contents">
       <form method="POST" action="{% url 'createSchedule' post.id %}">
         {% csrf_token %}
         <input type="hidden" value="{{post.id}}" name="id" />
@@ -39,8 +39,8 @@
       <div class="post-schedule">
         <div class="schedule-time">
           <input type="hidden" value="{{post.id}}" name="id" />
-          {{schedule.start_time|time:"g:i A"}} - {{schedule.end_time|time:"g:i
-          A"}}
+          {{schedule.start_time|time:"g:i A"}}
+          <span> - </span> {{schedule.end_time|time:"g:i A"}}
         </div>
         <div class="schedule-content">
           {{schedule.contents}}

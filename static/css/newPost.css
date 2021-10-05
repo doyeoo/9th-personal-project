@@ -1,5 +1,5 @@
 .newpost-contents {
-  padding: 0 20%;
+  padding: 0 25%;
 }
 @media screen and (max-width: 700px) {
   .newpost-contents {
@@ -15,6 +15,7 @@
   font-weight: 500;
   border-style: solid;
   border-color: black;
+  border-width: 1.5px;
   background-color: white;
   padding: 5px 20px;
   position: relative;

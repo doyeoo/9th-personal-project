@@ -66,8 +66,9 @@
         {% for schedule in schedules.all %}
         <div class="schedule-time">
           <div class="schedule-dot"></div>
-          {{schedule.start_time|time:"g:i A"}} - {{schedule.end_time|time:"g:i
-          A"}}
+          {{schedule.start_time|time:"g:i A"}}
+          <div class="time-between">-</div>
+          {{schedule.end_time|time:"g:i A"}}
         </div>
         <div class="schedule-content">{{schedule.contents}}</div>
         {% endfor %}

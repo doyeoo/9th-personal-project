@@ -1,8 +1,8 @@
-.contents {
-  padding: 0 20%;
+.addschedule-contents {
+  padding: 0 25%;
 }
 @media screen and (max-width: 700px) {
-  .contents {
+  .addschedule-contents {
     padding: 0 20px;
   }
 }

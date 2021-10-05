@@ -15,7 +15,7 @@
   <body>
     {% include 'header.html' %} 
   </div>   
-    <div class="contents">
+    <div class="editpost-contents">
       <form method="POST" action="{% url 'updateSchedule' post.id %}">
         {% csrf_token %}
         <input type="hidden" value="{{post.id}}" name="id" />
@@ -37,7 +37,8 @@
       <div class="post-schedule">
         <div class="schedule-time">
           <input type="hidden" value="{{post.id}}" name="id" />
-          {{schedule.start_time|time:"g:i A"}} - {{schedule.end_time|time:"g:i A"}}
+          {{schedule.start_time|time:"g:i A"}}
+          <span> - </span> {{schedule.end_time|time:"g:i A"}}
         </div>
         <div class="schedule-content">
           {{schedule.contents}}
@@ -63,10 +64,8 @@
         <textarea class="post-input" name="body" rows="5">
 {{post.body}}</textarea
         >
-        <div>해시태그</div>
-        {% for hashtag in hashtags.all %}#{{hashtag}} {% endfor %}
-        <!--<input class="form-control" type="text" name="hashtags" value="{% for hashtag in hashtags.all %}#{{hashtag}} {% endfor %}"-->
-        <input type="file" name="image" class="image-button" />
+        <div class="input-title">해시태그</div>
+        <div class="hashtag-input">{% for hashtag in hashtags.all %}#{{hashtag}} {% endfor %}</div>
         <button class="finish-button" type="submit">완료</button>
       </form>
     </div>
