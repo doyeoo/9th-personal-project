@@ -1,1 +1,1 @@
-web: gunicorn mypage wsgi --log-file -
+web: gunicorn TodayProject.wsgi --log-file -
