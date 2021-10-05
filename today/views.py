@@ -19,7 +19,7 @@ def createPost(request):
     new_post.author = request.user
     new_post.pub_date = timezone.now()
     new_post.body = request.POST.get('body')
-    new_post.image=request.FILES['image']    
+    new_post.image=request.FILES.get('image')    
     new_post.save()
     hashtags = request.POST.get('hashtags')
     hashtag = hashtags.split(', ')

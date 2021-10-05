@@ -30,7 +30,9 @@ class Post(models.Model):
     )
 
     def __str__(self):
-        return self.title    
+        return self.title            
+    def summary(self):
+        return self.body[:30]
 
 class Schedule(models.Model):
     post = models.ForeignKey(

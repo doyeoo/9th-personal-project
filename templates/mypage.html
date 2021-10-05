@@ -6,19 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/mypage.css" />
   </head>
   <body>
+    <div class="header-wrapper">
+      <img src="../static/image/title.svg" class="title"/>
+  <div id="search-input-wrapper">
+  <form method='POST' action='{% url 'hashtagFilter' %}'>
+      <div class="search-input-container">
+      {% csrf_token %}
+      <input class="search-input" type="text" name="keyword" placeholder="해시태그 검색하기">
+      <button  class="search-button" type="submit"><img src="../static/image/icon-search.png" class="search-icon"/></button>
+      </div>
+  </form>
+  </div>
+      <div class="header">    
+          <a class="search" onclick="showSearch();">Search</a>
+          <a href="{% url 'home' %}" class="archieve">Archive</a>
+          {% if not user.is_authenticated %}
+          <a class="auth" href="{% url 'login' %}">Login</a>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <a href="{% url 'mypage' %}" class="mypage">My Page</a></>
+          <a href="{% url 'logout' %}" class="auth">Logout</button></a>
+          {% endif %}           
+      </div>    
+  </div>   
     <div class="contents">
-      <h2>기록</h2>
+      <h2>My Days</h2>
+      <div class="post-list">
       {% for post in posts.all %}
-      <div>{{post.title}}</div>
-      <div>{{post.pub_date}}</div>
-      <div>{{post.body}}<a href="{% url 'postDetail' post.id %}">more</a></div>
-      {% endfor %}
+      <div class="post-wrapper">
+        <a href="{% url 'postDetail' post.id %}">
+        <div class="post-image-background">
+          {% if post.image %}
+          <img class="post-image" src="{{ post.image.url }}">
+          {% endif %}
+        </div>
+              <div class="post-title">{{post.title}}</div>
+              <div class="post-pub-date">{{post.pub_date|date:"Y-m-d"}}</div>
+              <div class="post-body">{{post.body}}</div>
+          </a> 
+        </div>
+      {% endfor %}  
+      </div>
       <h2>스크랩</h2>
       {% for bookmark in bookmarks.all %}
       <div>{{bookmark.title}}</div>
-      <div>{{bookmark.pub_date}}</div>
+      <div>{{bookmark.pub_date|date:"Y-m-d"}}</div>
       <div>
         {{bookmark.body}}<a href="{% url 'postDetail' bookmark.id %}">more</a>
       </div>

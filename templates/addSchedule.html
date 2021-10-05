@@ -12,6 +12,29 @@
     <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
   </head>
   <body>
+    <div class="header-wrapper">
+      <img src="../static/image/title.svg" class="title"/>
+  <div id="search-input-wrapper">
+  <form method='POST' action='{% url 'hashtagFilter' %}'>
+      <div class="search-input-container">
+      {% csrf_token %}
+      <input class="search-input" type="text" name="keyword" placeholder="해시태그 검색하기">
+      <button  class="search-button" type="submit"><img src="../static/image/icon-search.png" class="search-icon"/></button>
+      </div>
+  </form>
+  </div>
+      <div class="header">    
+          <a class="search" onclick="showSearch();">Search</a>
+          <a href="{% url 'home' %}" class="archieve">Archive</a>
+          {% if not user.is_authenticated %}
+          <a class="auth" href="{% url 'login' %}">Login</a>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <a href="{% url 'mypage' %}" class="mypage">My Page</a></>
+          <a href="{% url 'logout' %}" class="auth">Logout</button></a>
+          {% endif %}           
+      </div>    
+  </div>   
     <div class="contents">
       <h3 style="font-weight: 600">기록하기</h3>
       <form method="POST" action="{% url 'createSchedule' post.id %}">

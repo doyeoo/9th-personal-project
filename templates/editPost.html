@@ -1,42 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+    />
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="/static/css/editPost.css" />
+  </head>
+  <body>
     <div class="contents">
-    <h3 style="font-weight: 600;">수정하기</h3>
-    
-    <form method="POST" action="{% url 'updateSchedule' post.id %}">
+      <h3 style="font-weight: 600">수정하기</h3>
+
+      <form method="POST" action="{% url 'updateSchedule' post.id %}">
         {% csrf_token %}
-        <input type="hidden" value="{{post.id}}" name="id">
-        일정<input type="time" name="start_time">
-        <input type="time" name="end_time">
-        <input class="form-control" type="text" name="contents">
+        <input type="hidden" value="{{post.id}}" name="id" />
+        일정<input type="time" name="start_time" />
+        <input type="time" name="end_time" />
+        <input class="form-control" type="text" name="contents" />
         <button class="button" type="submit">추가</button>
-    </form>
+      </form>
 
-    {% for schedule in schedules.all %}
-    <input type="hidden" value="{{post.id}}" name="id">
-    {{schedule.start_time}}-{{schedule.end_time}}
-    {{schedule.contents}}
-    <a href="{% url 'deleteSchedule' post.id schedule.id %}"><img src="../static/image/schedule-delete.svg" class="schedule-delete"></a>
-    <br>
-    {% endfor %}
+      {% for schedule in schedules.all %}
+      <div class="post-schedule">
+        <div class="schedule-time">
+          <input type="hidden" value="{{post.id}}" name="id" />
+          {{schedule.start_time|time:"H:i"}} - {{schedule.end_time|time:"H:i"}}
+        </div>
+        <div class="schedule-content">
+          {{schedule.contents}}
+          <a href="{% url 'deleteSchedule' post.id schedule.id %}"
+            ><img
+              src="../static/image/schedule-delete.svg"
+              class="schedule-delete"
+          /></a>
+        </div>
+      </div>
+      {% endfor %}
 
-    <form action="{%url 'updatePost' post.id %}" method="post">
+      <form action="{%url 'updatePost' post.id %}" method="post">
         {%csrf_token%}
-        <div>제목<input class="form-control" type="text" name="title" value="{{post.title}}"></div>
-        <div>본문<textarea class="form-control" name="body">{{post.body}}</textarea></div>
-        <div>해시태그</div>{% for hashtag in hashtags.all %}#{{hashtag}} {% endfor %}
-        <!--<input class="form-control" type="text" name="hashtags" value="{% for hashtag in hashtags.all %}#{{hashtag}} {% endfor %}"-->        
+        <div>
+          제목<input
+            class="form-control"
+            type="text"
+            name="title"
+            value="{{post.title}}"
+          />
+        </div>
+        <div>
+          본문<textarea class="form-control" name="body" style="height: 180px">
+{{post.body}}</textarea
+          >
+        </div>
+        <div>해시태그</div>
+        {% for hashtag in hashtags.all %}#{{hashtag}} {% endfor %}
+        <!--<input class="form-control" type="text" name="hashtags" value="{% for hashtag in hashtags.all %}#{{hashtag}} {% endfor %}"-->
         <button class="button" type="submit">완료</button>
-    </form>
+      </form>
     </div>
-</body>
+  </body>
 </html>

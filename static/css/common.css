@@ -1,61 +1,79 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-*{
-    font-family: Pretendard;
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+* {
+  font-family: Pretendard;
 }
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
-.header a{
-    color: black;
-    font-weight: 600;
-    padding: 20px;
+.header a {
+  color: black;
+  font-weight: 600;
+  padding: 20px;
 }
-.search:hover{
-    color:#b10104;
+.header a:hover {
+  text-decoration: underline;
+  text-underline-position: under;
+  text-decoration-thickness: 2px;
 }
-.archieve:hover{
-    color:#0114b8;
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }
-.mypage:hover{
-    color: #005e25;
+.header {
+  display: flex;
 }
-.auth:hover{
-    color:#f2b400;
+.title {
+  margin-left: 20px;
 }
-.header-wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:20px;
-}
-.header{
-    display: flex;
-}
-.title{
+@media screen and (max-width: 600px) {
+  .title {
     font-weight: 600;
     font-size: 30px;
+    padding-bottom: 10px;
+  }
+  .header-wrapper {
+    display: grid;
+  }
+  .header a {
+    padding: 0 10px 0 0;
+  }
 }
-@media screen and (max-width:600px) {
-    .title{
-        font-weight: 600;
-        font-size: 30px;
-        padding-bottom: 10px;
-    }   
-    .header-wrapper{
-        display: grid;
-    } 
-    .header a{
-        padding:0 10px 0 0;
-    }
- }
- .contents{
-    padding: 0 15%; 
- }
- @media screen and (max-width:600px){
-    .contents{
-       padding: 0 20px; 
-    }
- }
- #searchInput{
-    display: none;
- }
+.contents {
+  padding: 0 15%;
+  margin-bottom: 10%;
+}
+@media screen and (max-width: 600px) {
+  .contents {
+    padding: 0 20px;
+  }
+  .title {
+    margin: 0;
+  }
+}
+#search-input-wrapper {
+  display: none;
+  border: 1px solid black;
+  padding: 0 3px;
+  margin: 10px 0;
+}
+.search-input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-input {
+  outline: none;
+  background: transparent;
+  border-style: none;
+}
+.search-button {
+  outline: none;
+  background: transparent;
+  border: 1px solid transparent;
+}
+.search-icon {
+  width: 20px;
+  padding-top: 2px;
+}

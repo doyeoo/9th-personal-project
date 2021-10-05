@@ -1,0 +1,13 @@
+.schedule-time {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+}
+.schedule-content {
+  font-size: 15px;
+  padding-bottom: 10px;
+  padding: 0 10px;
+}
+.post-schedule {
+  display: flex;
+}

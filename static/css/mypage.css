@@ -1,0 +1,25 @@
+.post-image-background {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 70%;
+}
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.post-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.post-wrapper {
+  margin: 10px;
+}
+.post-title {
+  padding-top: 10px;
+  font-weight: 600;
+}
+.post-pub.date {
+  color: #575757;
+  font-weight: 500;
+}

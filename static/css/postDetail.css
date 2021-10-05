@@ -6,15 +6,81 @@
   z-index: 0;
 }
 .post-title {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 600;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  padding: 8px 0;
+}
+.post-pub-date {
+  font-size: 18px;
+  color: #575757;
+  font-weight: 500;
+}
+.post-author {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.post-schedule {
+  border-left: 4px solid black;
+  padding-left: 15px;
+  margin-left: 25px;
+}
+.schedule-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background-color: #c24229;
+  position: relative;
+  left: -25px;
+}
+.schedule-time {
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+}
+.schedule-content {
+  font-size: 18px;
+  padding-bottom: 20px;
+  padding-top: 5px;
+  padding-left: 12px;
+}
+.post-body {
+  font-size: 18px;
+  padding: 20px 0;
+  line-height: 170%;
+  width: 70%;
+}
+@media screen and (max-width: 600px) {
+  .post-body {
+    width: 100%;
+  }
+  .post-title {
+    display: grid;
+    font-size: 25px;
+  }
 }
 #bookmark-icon-empty {
   display: block;
+  transition: 0.3s;
 }
 #bookmark-icon-filled {
   display: none;
+  transition: 0.3s;
+}
+#control-button {
+  font-size: 12px;
+  font-weight: 600;
+  border-style: solid;
+  border-color: black;
+  border-radius: 20px;
+  border-width: 1.8px;
+  background-color: white;
+  padding: 3px 10px;
+  transition: 0.3s;
+}
+#control-button:hover {
+  background-color: black;
+  color: white;
 }

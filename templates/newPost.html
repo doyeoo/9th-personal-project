@@ -10,6 +10,7 @@
     />
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/newPost.css" />
   </head>
   <body>
     <div class="contents">
@@ -22,14 +23,18 @@
         {% csrf_token %}
         <div>제목<input class="form-control" type="text" name="title" /></div>
         <div>
-          본문<textarea class="form-control" name="body">
+          본문<textarea
+            class="form-control"
+            name="body"
+            style="height: max-content"
+          >
 {{post.body}}</textarea
           >
         </div>
         <div>
           해시태그<input class="form-control" type="text" name="hashtags" />
         </div>
-        <input type="file" type="img" name="image" multiples />
+        <input type="file" name="image" />
         <button class="button" type="submit">일정추가하기</button>
       </form>
     </div>
