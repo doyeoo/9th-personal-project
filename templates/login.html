@@ -18,7 +18,7 @@
       <form method="post" action="{% url 'login' %}" class="login-form">
         {%csrf_token%}
         <h3 class="sub-title">로그인</h3>
-        <div class="form-group">
+        <div class="input-wrapper">
           <div>아이디</div>
           <input
             class="form-control"
@@ -26,7 +26,7 @@
             type="text"
           />
         </div>
-        <div class="form-group">
+        <div class="input-wrapper">
           <div>비밀번호</div>
           <input
             class="form-control"
