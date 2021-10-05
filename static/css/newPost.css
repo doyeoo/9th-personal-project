@@ -1,0 +1,27 @@
+.newpost-contents {
+  padding: 0 20%;
+}
+@media screen and (max-width: 700px) {
+  .newpost-contents {
+    padding: 0 20px;
+  }
+}
+.input-title {
+  font-size: 15px;
+  font-weight: 500;
+}
+.schedule-button {
+  font-size: 15px;
+  font-weight: 500;
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+  padding: 5px 20px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  border-radius: 20px;
+}
+input {
+  margin-bottom: 20px;
+}

@@ -6,6 +6,18 @@
     padding: 0 20px;
   }
 }
+.finish-button {
+  font-size: 15px;
+  font-weight: 500;
+  border-style: none;
+  color: white;
+  background-color: black;
+  padding: 5px 20px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  border-radius: 20px;
+}
 .schedule-content-container {
   display: flex;
   justify-content: space-between;
@@ -46,21 +58,4 @@
 }
 .schedule-content {
   margin-left: 10px;
-}
-.post-input {
-  border: solid black 1px;
-  width: 100%;
-  padding: 10px;
-}
-.finish-button {
-  font-size: 15px;
-  font-weight: 500;
-  border-style: none;
-  color: white;
-  background-color: black;
-  padding: 5px 20px;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  border-radius: 20px;
 }

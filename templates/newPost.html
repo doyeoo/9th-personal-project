@@ -13,30 +13,28 @@
     <link rel="stylesheet" type="text/css" href="/static/css/newPost.css" />
   </head>
   <body>
-    <div class="contents">
-      <h3 style="font-weight: 600">기록하기</h3>
+    {% include 'header.html' %}
+    <div class="newpost-contents">
       <form
         action="{% url 'createPost' %}"
         method="POST"
         enctype="multipart/form-data"
       >
         {% csrf_token %}
-        <div>제목<input class="form-control" type="text" name="title" /></div>
-        <div>
-          본문<textarea
-            class="form-control"
-            name="body"
-            style="height: max-content"
-          >
+        <div class="input-title">제목</div>
+        <input class="form-control" type="text" name="title" />
+        <div class="input-title">본문</div>
+        <textarea class="form-control" name="body" rows="7">
 {{post.body}}</textarea
-          >
-        </div>
-        <div>
-          해시태그<input class="form-control" type="text" name="hashtags" />
-        </div>
-        <input type="file" name="image" />
-        <button class="button" type="submit">일정추가하기</button>
+        >
+
+        <div class="input-title">해시태그</div>
+        <input class="form-control" type="text" name="hashtags" />
+
+        <input type="file" name="image" class="image-button" />
+        <button type="submit" class="schedule-button">일정 추가하기</button>
       </form>
     </div>
   </body>
+  <script src="../static/js/common.js"></script>
 </html>

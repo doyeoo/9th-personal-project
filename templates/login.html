@@ -13,30 +13,8 @@
     />
   </head>
   <body>
-    <div class="header-wrapper">
-      <img src="../static/image/title.svg" class="title"/>
-  <div id="search-input-wrapper">
-  <form method='POST' action='{% url 'hashtagFilter' %}'>
-      <div class="search-input-container">
-      {% csrf_token %}
-      <input class="search-input" type="text" name="keyword" placeholder="해시태그 검색하기">
-      <button  class="search-button" type="submit"><img src="../static/image/icon-search.png" class="search-icon"/></button>
-      </div>
-  </form>
-  </div>
-      <div class="header">    
-          <a class="search" onclick="showSearch();">Search</a>
-          <a href="{% url 'home' %}" class="archieve">Archive</a>
-          {% if not user.is_authenticated %}
-          <a class="auth" href="{% url 'login' %}">Login</a>
-          {% endif %}
-          {% if user.is_authenticated %}
-          <a href="{% url 'mypage' %}" class="mypage">My Page</a></>
-          <a href="{% url 'logout' %}" class="auth">Logout</button></a>
-          {% endif %}           
-      </div>    
-  </div>   
-    <div class="contents">
+    {% include 'header.html' %}
+    <div class="login-contents">
       <form method="post" action="{% url 'login' %}" class="login-form">
         {%csrf_token%}
         <h3 class="sub-title">로그인</h3>
@@ -57,14 +35,14 @@
           />
         </div>
         <div class="button-area">
-          <button type="submit" class="button">로그인</button>
+          <button type="submit" class="button">LOGIN</button>
         </div>
-        </form>
-        <input type="hidden" name="next" value="{{ next }}" />
       </form>
-      <a href="{% url 'signup' %}" class="button-area"
-        ><button class="button">회원가입</button></a
-      >
+      <div class="back-text">
+        회원이 아니신가요?
+        <a href="{% url 'signup' %}" class="signup-text">SIGN UP</a>
+      </div>
     </div>
   </body>
+  <script src="../static/js/common.js"></script>
 </html>

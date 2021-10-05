@@ -11,7 +11,6 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
     />
-    <meta http-equiv="Page-Enter" content="blendTrans(Duration=2)" />
   </head>
   <body>
     {% include 'header.html' %}
@@ -19,30 +18,31 @@
       <h3 class="sub-title">{{user.nickname}}님 반가워요!</h3>
       <div class="button-wrapper">
         <a href="{% url 'mypage' %}"
-          ><button class="active-button">RECORDS</button></a
+          ><button class="disabled-button">RECORDS</button></a
         >
         <a href="{% url 'mypageBookmark' %}"
-          ><button class="disabled-button">BOOKMARKS</button></a
+          ><button class="active-button">BOOKMARKS</button></a
         >
       </div>
       <div class="post-list">
-        {% for post in posts.all %}
+        {% for bookmark in bookmarks.all %}
         <div class="post-wrapper">
           <a
-            href="{% url 'postDetail' post.id %}"
+            href="{% url 'postDetail' bookmark.id %}"
+            class="linktag"
             style="text-decoration: none; color: black"
           >
             <div class="post-image-background">
-              {% if post.image %}
-              <img class="post-image" src="{{ post.image.url }}" />
+              {% if bookmark.image %}
+              <img class="post-image" src="{{ bookmark.image.url }}" />
               {% endif %}
             </div>
             <div class="post-text">
-              <div class="post-title">{{post.title}}</div>
+              <div class="post-title">{{bookmark.title}}</div>
               <div class="post-pub-date" style="color: #575757">
-                {{post.pub_date|date:"Y-m-d"}}
+                {{bookmark.pub_date|date:"Y-m-d"}}
               </div>
-              <div class="post-body">{{post.summary}}</div>
+              <div class="post-body">{{bookmark.summary}}</div>
             </div>
           </a>
         </div>

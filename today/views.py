@@ -35,8 +35,9 @@ def newPost(request):
 def postDetail(request, post_id):
     post_detail = get_object_or_404(Post, pk=post_id)
     hashtag = post_detail.hashtag.all()
+    bookmark=post_detail.bookmark.all()
     schedule=post_detail.schedules.all().order_by('start_time__hour')
-    return render(request, 'postDetail.html', {'post': post_detail, 'hashtags': hashtag, 'schedules': schedule})
+    return render(request, 'postDetail.html', {'post': post_detail, 'hashtags': hashtag, 'schedules': schedule, 'bookmarks':bookmark})
 
 def editPost(request, post_id):
     post_detail = get_object_or_404(Post, pk=post_id)
@@ -48,6 +49,7 @@ def updatePost(request, post_id):
     post_update = get_object_or_404(Post, pk=post_id)
     post_update.title = request.POST.get('title')
     post_update.body = request.POST.get('body')
+    post_update.image=request.FILES.get('image')    
     post_update.save()
     hashtags = request.POST.get('hashtags')
     return redirect('postDetail', post_id)
@@ -77,9 +79,9 @@ def addSchedule(request, post_id):
 def createSchedule(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     schedule = Schedule()
-    schedule.start_time = request.POST['start_time']
-    schedule.end_time = request.POST['end_time']
-    schedule.contents = request.POST['contents']
+    schedule.start_time = request.POST.get('start_time')
+    schedule.end_time = request.POST.get('end_time')
+    schedule.contents = request.POST.get('contents')
     schedule.post = post
     schedule.save()
     return redirect('addSchedule', post_id)
@@ -92,9 +94,9 @@ def deleteNewSchedule(request, post_id, schedule_id):
 def updateSchedule(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     schedule_update = Schedule()
-    schedule_update.start_time = request.POST['start_time']
-    schedule_update.end_time = request.POST['end_time']
-    schedule_update.contents = request.POST['contents']
+    schedule_update.start_time = request.POST.get('start_time')
+    schedule_update.end_time = request.POST.get('end_time')
+    schedule_update.contents = request.POST.get('contents')
     schedule_update.post = post
     schedule_update.save()
     return redirect('editPost', post_id)

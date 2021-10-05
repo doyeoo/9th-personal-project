@@ -42,5 +42,6 @@ urlpatterns = [
     path('account/login', account.views.login_view, name="login"),
     path('account/logout', account.views.logout_view, name="logout"),
     path('mypage', account.views.mypage, name="mypage"),
+    path('mypageBookmark', account.views.mypageBookmark, name="mypageBookmark"),
     path('bookmark',today.views.bookmark, name="bookmark"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

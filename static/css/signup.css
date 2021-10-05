@@ -1,0 +1,33 @@
+.finish-button {
+  background-color: black;
+  color: white;
+  padding: 8px;
+  border: none;
+  width: 100%;
+  margin-top: 20px;
+}
+.signup-input {
+  border: solid black 1px;
+  width: 100%;
+  padding: 10px;
+}
+.signup-contents {
+  padding: 0 30%;
+  padding-bottom: 10%;
+}
+@media screen and (max-width: 800px) {
+  .signup-contents {
+    padding: 0 50px;
+    padding-bottom: 10%;
+  }
+}
+.sub-title {
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.signup-margin {
+  padding: 5px;
+}

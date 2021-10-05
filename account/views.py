@@ -47,3 +47,8 @@ def mypage(request):
     logged_in_user_bookmarks=Post.objects.filter(bookmark=request.user)
     return render(request, 'mypage.html', {'posts': logged_in_user_posts, 'bookmarks':logged_in_user_bookmarks})
 
+def mypageBookmark(request):
+    logged_in_user = request.user
+    logged_in_user_posts = Post.objects.filter(author=request.user)
+    logged_in_user_bookmarks=Post.objects.filter(bookmark=request.user)
+    return render(request, 'mypageBookmark.html', {'posts': logged_in_user_posts, 'bookmarks':logged_in_user_bookmarks})

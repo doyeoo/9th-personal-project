@@ -9,52 +9,51 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
     />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/css/addSchedule.css"
+    />
   </head>
   <body>
-    <div class="header-wrapper">
-      <img src="../static/image/title.svg" class="title"/>
-  <div id="search-input-wrapper">
-  <form method='POST' action='{% url 'hashtagFilter' %}'>
-      <div class="search-input-container">
-      {% csrf_token %}
-      <input class="search-input" type="text" name="keyword" placeholder="해시태그 검색하기">
-      <button  class="search-button" type="submit"><img src="../static/image/icon-search.png" class="search-icon"/></button>
-      </div>
-  </form>
-  </div>
-      <div class="header">    
-          <a class="search" onclick="showSearch();">Search</a>
-          <a href="{% url 'home' %}" class="archieve">Archive</a>
-          {% if not user.is_authenticated %}
-          <a class="auth" href="{% url 'login' %}">Login</a>
-          {% endif %}
-          {% if user.is_authenticated %}
-          <a href="{% url 'mypage' %}" class="mypage">My Page</a></>
-          <a href="{% url 'logout' %}" class="auth">Logout</button></a>
-          {% endif %}           
-      </div>    
-  </div>   
+    {% include 'header.html' %}
     <div class="contents">
-      <h3 style="font-weight: 600">기록하기</h3>
       <form method="POST" action="{% url 'createSchedule' post.id %}">
         {% csrf_token %}
         <input type="hidden" value="{{post.id}}" name="id" />
-        일정<input type="time" name="start_time" />
-        <input type="time" name="end_time" />
-        <input class="form-control" type="text" name="contents" />
-        <button class="button" type="submit">추가</button>
+        <div class="time-container">
+          <div class="time-title">시작 시간</div>
+          <div class="time-title">종료 시간</div>
+          <input type="time" name="start_time" class="time-input" />
+          <input type="time" name="end_time" class="time-input" />
+        </div>
+        <div class="schedule-content-container">
+          <input type="text" name="contents" id="schedule-content" />
+          <button class="add-button" type="submit">
+            <img src="../static/image/add-button.svg" class="search-icon" />
+          </button>
+        </div>
       </form>
       {% for schedule in schedules.all %}
-      <div>{{schedule.start_time}} - {{schedule.end_time}}</div>
-      {{schedule.contents}}
-      <a href="{% url 'deleteNewSchedule' post.id schedule.id %}"
-        ><img src="../static/image/schedule-delete.svg" class="schedule-delete"
-      /></a>
-      <br />
+      <div class="post-schedule">
+        <div class="schedule-time">
+          <input type="hidden" value="{{post.id}}" name="id" />
+          {{schedule.start_time|time:"g:i A"}} - {{schedule.end_time|time:"g:i
+          A"}}
+        </div>
+        <div class="schedule-content">
+          {{schedule.contents}}
+          <a href="{% url 'deleteNewSchedule' post.id schedule.id %}"
+            ><img
+              src="../static/image/schedule-delete.svg"
+              class="schedule-delete"
+          /></a>
+        </div>
+      </div>
       {% endfor %}
       <a href="{% url 'postDetail' post.id %}"
-        ><button class="button">완료</button></a
+        ><button class="finish-button">완료</button></a
       >
     </div>
   </body>

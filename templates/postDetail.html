@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+    />
     <title>Document</title>
     <link
       rel="stylesheet"
@@ -13,69 +17,63 @@
     <link rel="stylesheet" type="text/css" href="../static/css/common.css" />
   </head>
   <body>
-    <div class="header-wrapper">
-      <img src="../static/image/title.svg" class="title"/>
-  <div id="search-input-wrapper">
-  <form method='POST' action='{% url 'hashtagFilter' %}'>
-      <div class="search-input-container">
-      {% csrf_token %}
-      <input class="search-input" type="text" name="keyword" placeholder="해시태그 검색하기">
-      <button  class="search-button" type="submit"><img src="../static/image/icon-search.png" class="search-icon"/></button>
-      </div>
-  </form>
-  </div>
-      <div class="header">    
-          <a class="search" onclick="showSearch();">Search</a>
-          <a href="{% url 'home' %}" class="archieve">Archive</a>
-          {% if not user.is_authenticated %}
-          <a class="auth" href="{% url 'login' %}">Login</a>
-          {% endif %}
-          {% if user.is_authenticated %}
-          <a href="{% url 'mypage' %}" class="mypage">My Page</a></>
-          <a href="{% url 'logout' %}" class="auth">Logout</button></a>
-          {% endif %}           
-      </div>    
-  </div>   
+    {% include 'header.html' %}
     <div class="contents">
       {% if post.image %}
       <img src="{{ post.image.url }}" class="background-image" />
       {% endif %}
       <div class="post-title">
         {{post.title}} {% if user.is_authenticated and user == post.author %}
+        <div class="empty"></div>
         <div>
-          <a href="{% url 'editPost' post.id %}"
+          <a href="{% url 'editPost' post.id %}" style="color: black"
             ><button id="control-button">EDIT</button></a
           >
-          <a href="{% url 'deletePost' post.id%}"
+          <a href="{% url 'deletePost' post.id%}" style="color: black"
             ><button id="control-button">DELETE</button></a
           >
         </div>
         {% else %}
         <div id="{{post.id}}" onclick="post_bookmark(this.id)">
+          {% if user in bookmarks.all %}
+          <img
+            src="../static/image/bookmark-filled.svg"
+            id="bookmark-icon-filled"
+            style="display: block"
+          />
           <img
             src="../static/image/bookmark-empty.svg"
             id="bookmark-icon-empty"
+            style="display: none"
+          />
+          {% else %}
+          <img
+            src="../static/image/bookmark-empty.svg"
+            id="bookmark-icon-empty"
+            style="display: block"
           />
           <img
             src="../static/image/bookmark-filled.svg"
             id="bookmark-icon-filled"
-          />
+            style="display: none"
+          />{% endif %}
         </div>
         {% endif %}
       </div>
       <div class="post-pub-date">{{post.pub_date|date:"Y-m-d"}}</div>
       <div class="post-author">{{post.author.nickname}}</div>
-      {% for schedule in schedules.all %}
       <div class="post-schedule">
+        {% for schedule in schedules.all %}
         <div class="schedule-time">
           <div class="schedule-dot"></div>
-          {{schedule.start_time|time:"H:i"}} - {{schedule.end_time|time:"H:i"}}
+          {{schedule.start_time|time:"g:i A"}} - {{schedule.end_time|time:"g:i
+          A"}}
         </div>
         <div class="schedule-content">{{schedule.contents}}</div>
+        {% endfor %}
       </div>
-      {% endfor %}
       <div class="post-body">{{post.body}}</div>
-      <div class="post-hashtag">
+      <div class="post-hashtag" style="font-size: 18px">
         {% for hashtag in hashtags.all %} #{{hashtag}} {% endfor %}
       </div>
     </div>
@@ -103,20 +101,7 @@
           },
         });
       }
-
-      var count = $(".post-schedule > .schedule-time").length;
-
-      for (i = 1; i <= count; i++) {
-        if (i <= 3) {
-          console.log(i + "green");
-          $(".post-schedule.schedule-time")
-            .eq(i - 1)
-            .addClass("green");
-        } else {
-          console.log(i + "blue");
-          $(".accordion .item h1").addClass("blue");
-        }
-      }
     </script>
   </body>
+  <script src="../static/js/common.js"></script>
 </html>

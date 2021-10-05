@@ -26,6 +26,7 @@
   border-left: 4px solid black;
   padding-left: 15px;
   margin-left: 25px;
+  line-height: 100%;
 }
 .schedule-dot {
   width: 15px;
@@ -33,18 +34,19 @@
   border-radius: 100%;
   background-color: #c24229;
   position: relative;
-  left: -25px;
+  left: -24.7px;
 }
 .schedule-time {
   font-size: 18px;
   font-weight: 600;
   display: flex;
+  align-items: center;
 }
 .schedule-content {
   font-size: 18px;
-  padding-bottom: 20px;
-  padding-top: 5px;
-  padding-left: 12px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  padding-left: 15px;
 }
 .post-body {
   font-size: 18px;
@@ -58,16 +60,22 @@
   }
   .post-title {
     display: grid;
+    grid-template-columns: 1fr 28px;
+    justify-content: space-between;
     font-size: 25px;
   }
 }
 #bookmark-icon-empty {
   display: block;
   transition: 0.3s;
+  position: relative;
+  z-index: 1;
 }
 #bookmark-icon-filled {
   display: none;
   transition: 0.3s;
+  position: relative;
+  z-index: 1;
 }
 #control-button {
   font-size: 12px;
@@ -83,4 +91,8 @@
 #control-button:hover {
   background-color: black;
   color: white;
+}
+#bookmark-top {
+  position: absolute;
+  z-index: 10;
 }
