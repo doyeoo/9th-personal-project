@@ -48,8 +48,7 @@ def editPost(request, post_id):
 def updatePost(request, post_id):
     post_update = get_object_or_404(Post, pk=post_id)
     post_update.title = request.POST.get('title')
-    post_update.body = request.POST.get('body')
-    post_update.image=request.FILES.get('image')    
+    post_update.body = request.POST.get('body')   
     post_update.save()
     hashtags = request.POST.get('hashtags')
     return redirect('postDetail', post_id)
