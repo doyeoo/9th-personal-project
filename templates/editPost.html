@@ -67,7 +67,7 @@
 {{post.body}}</textarea
         >
         <div class="input-title">해시태그</div>
-        <div class="hashtag-input">{% for hashtag in hashtags.all %}#{{hashtag}} {% endfor %}</div>
+        <input class="post-input" type="text" name="hashtags" value="{% for hashtag in hashtags.all %}{{hashtag}}, {% endfor %}">
         <button class="finish-button" type="submit">완료</button>
       </form>
     </div>

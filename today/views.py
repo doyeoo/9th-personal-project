@@ -23,7 +23,7 @@ def createPost(request):
     new_post.image=request.FILES.get('image')    
     new_post.save()
     hashtags = request.POST.get('hashtags')
-    hashtag = hashtags.split('#')
+    hashtag = hashtags.split(', ')
     for tag in hashtag:
         hashtag = Hashtag.objects.get_or_create(hashtag_name=tag)
         new_post.hashtag.add(hashtag[0])
@@ -51,7 +51,12 @@ def updatePost(request, post_id):
     post_update.title = request.POST.get('title')
     post_update.body = request.POST.get('body')   
     post_update.save()
+    post_update.hashtag.clear()
     hashtags = request.POST.get('hashtags')
+    hashtag = hashtags.split(', ')
+    for tag in hashtag:
+        hashtag = Hashtag.objects.get_or_create(hashtag_name=tag)
+        post_update.hashtag.add(hashtag[0])
     return redirect('postDetail', post_id)
 
 def deletePost(request, post_id):
