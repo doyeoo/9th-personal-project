@@ -44,3 +44,17 @@ class Schedule(models.Model):
     def __str__(self):
         return f"{self.post} {self.start_time}-{self.end_time}"
  
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    message=models.TextField(max_length=200)
+    pub_date=models.DateTimeField(auto_now_add=True)
+    author=models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+
+    def approve(self):
+        self.save()
+
+    def __str__(self):
+        return self.message

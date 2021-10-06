@@ -1,3 +1,4 @@
+from datetime import time
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -129,3 +130,35 @@ def bookmark(request):
             message = "북마크" 
         context = {"message":message}
         return HttpResponse(json.dumps(context), content_type='application/json')    
+
+def comment(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():  # 유효성 검사
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('detail', post_id)
+    else:
+        form = CommentForm()
+    return redirect('detail', post_id)
+
+
+def addComment(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == 'POST':
+        comment = Comment()
+        comment.message = request.POST['message']
+        comment.post = post
+        comment.pub_date=timezone.now()
+        comment.author = request.user
+        comment.save()
+        return redirect('postDetail', post_id)
+    else:
+        return redirect('home')
+
+def deleteComment(request, comment_id, post_id):
+    comment_delete = get_object_or_404(Comment, pk=comment_id)
+    comment_delete.delete()
+    return redirect('postDetail', post_id)

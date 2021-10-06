@@ -25,6 +25,7 @@
   color: #656565;
   display: flex;
   justify-content: center;
+  font-size: 15px;
 }
 .form-control {
   border-radius: 0;

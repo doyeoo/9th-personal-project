@@ -20,13 +20,13 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 22px;
 }
 .header {
   display: flex;
 }
 .title {
-  padding-left: 20px;
+  padding-left: 22px;
 }
 @media screen and (max-width: 700px) {
   .title {
@@ -48,7 +48,7 @@ a {
 }
 @media screen and (max-width: 600px) {
   .contents {
-    padding: 0 20px;
+    padding: 0 22px;
     margin-bottom: 30%;
   }
   .title {

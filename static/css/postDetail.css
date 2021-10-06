@@ -99,3 +99,47 @@
 .time-between {
   margin: 0 5px;
 }
+.comment-list {
+  font-size: 17px;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 5px;
+}
+.comment-nickname {
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment-date {
+  color: #575757;
+  font-size: 15px;
+}
+.new-comment-box {
+  margin-bottom: 10px;
+  margin-top: 25px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 3px 0;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment-input {
+  outline: none;
+  background: transparent;
+  border-style: none;
+  width: 100%;
+}
+.send-button {
+  outline: none;
+  background: transparent;
+  border-style: none;
+}
+.send-icon {
+  width: 25px;
+}
+.nologin-send-icon {
+  width: 25px;
+  padding-right: 5px;
+}

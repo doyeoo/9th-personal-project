@@ -5,3 +5,4 @@ from today.models import *
 admin.site.register(Schedule)
 admin.site.register(Hashtag)
 admin.site.register(Post)
+admin.site.register(Comment)
