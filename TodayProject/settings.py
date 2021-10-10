@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'today.apps.TodayConfig',
     'account.apps.AccountConfig',
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,10 @@ AUTH_USER_MODEL = 'account.CustomUser'
 import dj_database_url
 db_from_env=dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+CLOUDINARY_STORAGE={
+    'CLOUD_NAME':'hdhxypv4b',
+    'API_KEY':'869782959965433',
+    'API_SECRET':'fgn5KLv-ZNudBzdlwCC7Pite3Fc',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
