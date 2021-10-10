@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'today.apps.TodayConfig',
     'account.apps.AccountConfig',
     'cloudinary_storage',
-    'django.contrib.staticfiles',
     'cloudinary',
 ]
 
