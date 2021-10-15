@@ -10,7 +10,7 @@ from django.views.decorators.http import require_POST
 # Create your views here.
 
 def home(request):
-    post=Post.objects
+    post=Post.objects.all().order_by('-pub_date')
     return render(request, 'home.html', {'posts':post})
 
 @login_required
