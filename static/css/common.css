@@ -49,7 +49,7 @@ a {
 @media screen and (max-width: 600px) {
   .contents {
     padding: 0 22px;
-    margin-bottom: 30%;
+    margin-bottom: 20%;
   }
   .title {
     margin-top: 5px;

@@ -88,16 +88,21 @@ a {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 5%;
+  padding-top: 7%;
+}
+@media screen and (max-width: 600px) {
+  .paginator {
+    padding-top: 15%;
+  }
 }
 .page-active {
   color: #c24229;
   font-weight: 600;
-  padding: 0 3px;
+  padding: 0 2px;
 }
 .page-disabled {
   color: black;
-  padding: 0 3px;
+  padding: 0 2px;
 }
 .page-move {
   color: #5a5a5a;
