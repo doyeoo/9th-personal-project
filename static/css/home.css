@@ -80,3 +80,12 @@
   justify-content: space-between;
   padding: 20px 0;
 }
+.pagination {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+.page_active {
+  background-color: black;
+  color: white;
+}

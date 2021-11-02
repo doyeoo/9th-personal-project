@@ -1,4 +1,5 @@
 from datetime import time
+from django.core import paginator
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -6,12 +7,16 @@ from django.utils import timezone
 from .forms import *
 import json
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 from django.views.decorators.http import require_POST
 # Create your views here.
 
 def home(request):
     post=Post.objects.all().order_by('-pub_date')
-    return render(request, 'home.html', {'posts':post})
+    paginator=Paginator(post, 6)
+    page=request.GET.get('page')
+    page_post=paginator.get_page(page)
+    return render(request, 'home.html', {'posts':post, 'page_posts':page_post})
 
 @login_required
 def createPost(request):

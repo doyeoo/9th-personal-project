@@ -17,7 +17,7 @@
     {% include 'header.html' %}
     <div class="contents">
       <div class="post-container">
-        {% for post in posts.all %}
+        {% for post in page_posts %}
         <a href="{% url 'postDetail' post.id %}">
           <div class="post-wrapper">
             {% if post.image %}
@@ -30,6 +30,17 @@
           </div>
         </a>
         {% endfor %}
+      </div>
+      <div class="pagination">
+        {% if page_posts.has_previous %}
+        <a href="?page=1">이전</a>
+        {% endif %}{% for page in page_posts.paginator.page_range %}
+          <span {% if page == page_posts.number %} class="page_active" {% endif %}>
+            <a href="?page={{page}}">{{page}}</a>
+          </span>
+        {% endfor %}{% if page_posts.has_next %}
+        <a href="?page={{page_posts.paginator.num_pages}}">다음</a>
+        {% endif %}
       </div>
     </div>
   </body>
