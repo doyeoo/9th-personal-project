@@ -1,3 +1,6 @@
+a {
+  text-decoration: none !important;
+}
 .post-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -81,11 +84,8 @@
   padding: 20px 0;
 }
 .pagination {
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
+  font-size: 18px;
 }
 .page_active {
-  background-color: black;
-  color: white;
+  color: #c24229;
 }
