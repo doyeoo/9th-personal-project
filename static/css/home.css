@@ -83,9 +83,24 @@ a {
   justify-content: space-between;
   padding: 20px 0;
 }
-.pagination {
-  font-size: 18px;
+.paginator {
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
 }
-.page_active {
+.page-active {
   color: #c24229;
+  font-weight: 600;
+  padding: 0 3px;
+}
+.page-disabled {
+  color: black;
+  padding: 0 3px;
+}
+.page-move {
+  color: #5a5a5a;
+  padding: 0 20px;
+  font-size: 15px;
 }

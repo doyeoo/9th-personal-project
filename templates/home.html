@@ -31,16 +31,23 @@
         </a>
         {% endfor %}
       </div>
-      <div class="pagination">
-        {% if page_posts.has_previous %}
-        <a href="?page={{page_posts.number|add:-1}}">이전</a>
-        {% endif %}{% for page in page_posts.paginator.page_range %}
-          <span {% if page == page_posts.number %} class="page_active" {% endif %}>
-            <a href="?page={{page}}">{{page}}</a>
-          </span>
-        {% endfor %}{% if page_posts.has_next %}
-        <a href="?page={{page_posts.number|add:+1}}">다음</a>
-        {% endif %}
+      <div class="paginator">
+        <div>
+          {% if page_posts.has_previous %}
+            <a href="?page={{page_posts.number|add:-1}}" class="page-move">이전</a>
+          {% endif %}
+        </div>
+        <div>
+          {% for page in page_posts.paginator.page_range %}
+            <a href="?page={{page}}" {% if page == page_posts.number %} class="page-active" 
+            {% else %} class="page-disabled" {% endif %}>{{page}}</a>
+          {% endfor %}
+        </div>
+        <div>
+          {% if page_posts.has_next %}
+            <a href="?page={{page_posts.number|add:+1}}" class="page-move">다음</a>
+          {% endif %}
+        </div>
       </div>
     </div>
   </body>

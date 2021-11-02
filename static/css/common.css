@@ -44,7 +44,7 @@ a {
 }
 .contents {
   padding: 0 15%;
-  margin-bottom: 15%;
+  margin-bottom: 10%;
 }
 @media screen and (max-width: 600px) {
   .contents {
